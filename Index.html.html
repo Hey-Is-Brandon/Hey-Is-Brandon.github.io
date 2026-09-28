@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brandon Javier | Marketing Strategist & Creative Storyteller</title>
+  
+  <!-- Typography: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. GLOBAL RESET & EDITORIAL THEME
+       ========================================================================== */
+    :root {
+      --bg-color: #FAF8F5;          /* Warm cream / off-white */
+      --card-bg: #FFFFFF;           /* Crisp white for cards */
+      --text-main: #1A1918;         /* Deep charcoal espresso */
+      --text-muted: #66615C;        /* Soft taupe gray */
+      --accent: #8C7A6B;            /* Muted champagne gold / bronze */
+      --accent-light: #F2EDE8;      /* Light beige tint */
+      --border-color: #E6E1DA;      /* Subtle hairline border */
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Layout Containers */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Header Typography */
+    .section-tag {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      letter-spacing: -0.5px;
+    }
+
+    /* Scroll Reveal Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       2. NAVIGATION BAR
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 20px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-left: 8px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--text-main);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (MAGAZINE COVER LAYOUT)
+       ========================================================================== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+    }
+
+    .hero-image-frame {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      border-radius: 200px 200px 20px 20px; /* Editorial arch silhouette */
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: 3.8rem;
+      font-weight: 400;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .statement-box {
+      background-color: var(--card-bg);
+      border-left: 2px solid var(--accent);
+      padding: 24px;
+      margin-bottom: 28px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .statement-box p {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .bio-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 32px;
+    }
+
+    /* ==========================================================================
+       4. STATS BANNER
+       ========================================================================== */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background-color: var(--card-bg);
+      padding: 35px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-top: 60px;
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid var(--border-color);
+      padding: 0 15px;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       5. SKILLS MATRIX
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 35px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .skill-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--accent-light);
+      padding-bottom: 10px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-badge {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    /* ==========================================================================
+       6. FEATURED PROJECTS & MEDIA SHOWCASE
+       ========================================================================== */
+    .project-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    .project-badge-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: var(--accent-light);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 25px;
+      max-width: 900px;
+    }
+
+    /* Media Cards for Social Content Showcase */
+    .social-media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .media-card {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .media-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .media-card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .media-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    /* Editorial Action Buttons */
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent-light);
+    }
+
+    /* ==========================================================================
+       7. LIFE OUTSIDE MARKETING (PERSONAL SPOTLIGHT)
+       ========================================================================== */
+    .life-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .mosaic-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.4s ease;
+    }
+
+    .mosaic-img:hover {
+      transform: scale(1.03);
+    }
+
+    .mosaic-img.tall {
+      grid-row: span 2;
+      height: 495px;
+    }
+
+    .life-interests {
+      list-style: none;
+    }
+
+    .interest-item {
+      margin-bottom: 25px;
+      padding-left: 20px;
+      border-left: 2px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
+
+    .interest-item:hover {
+      border-left-color: var(--accent);
+    }
+
+    .interest-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .interest-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* ==========================================================================
+       8. CONTACT & FOOTER
+       ========================================================================== */
+    .contact-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 35px auto;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* ==========================================================================
+       9. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid, .skills-grid, .life-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-image-frame {
+        height: 420px;
+      }
+      .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      .stat-item {
+        border-right: none;
+      }
+      .social-media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 2.2rem;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .stats-banner {
+        grid-template-columns: 1fr;
+      }
+      .photo-mosaic {
+        grid-template-columns: 1fr;
+      }
+      .mosaic-img.tall {
+        grid-row: auto;
+        height: 280px;
+      }
+      nav ul {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">Brandon Javier <span>Portfolio</span></a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#lifestyle">Outside Marketing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION (COVER LAYOUT)
+         ========================================================================== -->
+    <section id="about" style="border-bottom: none;">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Headshot Frame -->
+          <div class="hero-image-wrapper reveal">
+            <img src="20250311_173402 (1).jpg" alt="Brandon Javier Headshot" class="hero-image-frame">
+          </div>
+
+          <!-- Hero Content -->
+          <div class="hero-content reveal">
+            <span class="section-tag">Marketing & Creative Portfolio</span>
+            <h1>Hello, I'm Brandon.</h1>
+            <div class="hero-subtitle">Rutgers Business School | BS / MS Gateway Digital Marketing Candidate</div>
+            
+            <div class="statement-box">
+              <p>"Creative marketing strategist and digital content creator leveraging visual storytelling, audience engagement analytics, and stage experience to connect brands with modern consumers."</p>
+            </div>
+
+            <p class="bio-text">
+              Currently pursuing my Bachelor of Science in Marketing at Rutgers Business School with plans to complete the Gateway Program for an MS in Digital Marketing. I bring a distinct perspective to brand strategy by combining academic business rigor with hands-on content creation, video direction, and live performing arts experience.
+            </p>
+
+            <div class="btn-group">
+              <a href="#projects" class="btn btn-primary">Explore Work</a>
+              <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Stats Callout Banner -->
+        <div class="stats-banner reveal">
+          <div class="stat-item">
+            <div class="stat-number">3.86</div>
+            <div class="stat-label">Rutgers GPA (Dean's List)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">BS / MS</div>
+            <div class="stat-label">Digital Marketing Gateway</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Active Social Channels</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">27</div>
+            <div class="stat-label">Member Dance Team Led</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS MATRIX
+         ========================================================================== -->
+    <section id="skills">
+      <div class="container">
+        <span class="section-tag reveal">Capabilities</span>
+        <h2 class="section-title reveal">Skills & Professional Toolkit</h2>
+
+        <div class="skills-grid">
+          
+          <!-- Skill Card 1 -->
+          <div class="skill-card reveal">
+            <h3>Marketing & Strategy</h3>
+            <div class="skill-tags">
+              <span class="skill-badge">Omnichannel Strategy</span>
+              <span class="skill-badge">Market Research</span>
+              <span class="skill-badge">Campaign Analytics & KPIs</span>
+              <span class="skill-badge">Creative Briefs</span>
+              <span class="skill-badge">Corporate Social Responsibility (CSR)</span>
+              <span class="skill-badge">Joint-Venture Expansion</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="skill-card reveal">
+            <h3>Content & Media Production</h3>
+            <div class="skill-tags">
+              <span class="skill-badge">Graphic Design (Canva)</span>
+              <span class="skill-badge">Video Editing & Production</span>
+              <span class="skill-badge">TikTok / Reels Creation</span>
+              <span class="skill-badge">YouTube Production</span>
+              <span class="skill-badge">Visual Storytelling</span>
+              <span class="skill-badge">Brand Identity</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="skill-card reveal">
+            <h3>Leadership & Performance</h3>
+            <div class="skill-tags">
+              <span class="skill-badge">On-Stage Performing</span>
+              <span class="skill-badge">Dance Captain & Choreography</span>
+              <span class="skill-badge">Team Management</span>
+              <span class="skill-badge">Event Planning & Fundraising</span>
+              <span class="skill-badge">Conversational Mandarin Chinese</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="skill-card reveal">
+            <h3>Software & Technical Toolkit</h3>
+            <div class="skill-tags">
+              <span class="skill-badge">Proficient in AI (Generative Workflows)</span>
+              <span class="skill-badge">Microsoft Excel, PowerPoint, Word</span>
+              <span class="skill-badge">Google Docs, Slides, Sheets</span>
+              <span class="skill-badge">Prompt Engineering</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED PROJECTS SHOWCASE
+         ========================================================================== -->
+    <section id="projects">
+      <div class="container">
+        <span class="section-tag reveal">Portfolio Showcase</span>
+        <h2 class="section-title reveal">Featured Case Studies & Work</h2>
+
+        <!-- Project 1: Social Content Creation -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <h3 class="project-title">Digital Content Creation & Brand Channels</h3>
+            <div class="project-badge-group">
+              <span class="tag">Digital Media</span>
+              <span class="tag">Video Strategy</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            Directing, editing, and producing creative short-form and long-form video content across YouTube, Instagram, and TikTok. Utilizing trend analysis, narrative pacing, and audience engagement metrics to grow personal digital brand channels.
+          </p>
+
+          <!-- Embedded Media Cards -->
+          <div class="social-media-grid">
+            <div class="media-card">
+              <span class="media-card-icon">▶️</span>
+              <div class="media-card-title">YouTube Channel</div>
+              <div class="media-card-sub">Long-form content & vlogs</div>
+              <a href="https://www.youtube.com/@HeyIsBrandon" target="_blank" class="btn btn-secondary">Visit @HeyIsBrandon</a>
+            </div>
+
+            <div class="media-card">
+              <span class="media-card-icon">📸</span>
+              <div class="media-card-title">Instagram Profile</div>
+              <div class="media-card-sub">Creative photography & Reels</div>
+              <a href="https://www.instagram.com/hey.is.brandon/" target="_blank" class="btn btn-secondary">Visit @hey.is.brandon</a>
+            </div>
+
+            <div class="media-card">
+              <span class="media-card-icon">🎵</span>
+              <div class="media-card-title">TikTok Account</div>
+              <div class="media-card-sub">Short-form trends & storytelling</div>
+              <a href="https://www.tiktok.com/@heyitsbrandon7" target="_blank" class="btn btn-secondary">Visit @heyitsbrandon7</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: RU Pawning -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <h3 class="project-title">RU Pawning ("From Me to (R)U")</h3>
+            <div class="project-badge-group">
+              <span class="tag">Business Strategy</span>
+              <span class="tag">Market Launch</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            Co-authored a comprehensive business concept for an authentic, on-campus resale and pawn platform tailored for Rutgers students. Formulated customer value propositions, financial projections ($10k net income target), CSR community give-back programs, and international joint-venture expansion strategies into Canadian university hubs.
+          </p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary">View Strategy Slide Deck</a>
+          </div>
+        </div>
+
+        <!-- Project 3: UNICEF Study -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <h3 class="project-title">UNICEF Chapter Operational Study (Team 2 AM)</h3>
+            <div class="project-badge-group">
+              <span class="tag">Nonprofit Management</span>
+              <span class="tag">Leadership Analysis</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            Conducted primary research and managerial analysis of the Hillsborough High School UNICEF chapter. Diagnosed member retention and organizational output challenges, delivering actionable restructuring recommendations based on McClelland’s Needs Theory and social proof influence models.
+          </p>
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary">View Case Study Presentation</a>
+          </div>
+        </div>
+
+        <!-- Project 4: Omnichannel Marketing Campaign -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <h3 class="project-title">Omnichannel Performance Apparel Launch (Forage)</h3>
+            <div class="project-badge-group">
+              <span class="tag">Omnichannel Strategy</span>
+              <span class="tag">Campaign Analytics</span>
+            </div>
+          </div>
+          <p class="project-desc">
+            Developed an integrated omnichannel marketing strategy and creative brief for a performance apparel brand product launch. Designed digital product experiences aligned with modern consumer trends and evaluated key campaign performance metrics.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LIFE OUTSIDE MARKETING (EDITORIAL SPOTLIGHT)
+         ========================================================================== -->
+    <section id="lifestyle">
+      <div class="container">
+        <span class="section-tag reveal">Personal Journal</span>
+        <h2 class="section-title reveal">Life Outside Marketing</h2>
+
+        <div class="life-grid">
+          
+          <!-- Photo Mosaic Grid -->
+          <div class="photo-mosaic reveal">
+            <img src="IMG_2552.jpg" alt="Brandon Creative Photo" class="mosaic-img tall">
+            <img src="IMG_0362.jpg" alt="Brandon Lifestyle Photo" class="mosaic-img">
+            <img src="20260819_192132.jpg" alt="Brandon Outdoors Photo" class="mosaic-img">
+          </div>
+
+          <!-- Personal Story & Interests -->
+          <div class="life-content reveal">
+            <ul class="life-interests">
+              
+              <li class="interest-item">
+                <div class="interest-title">Theatre & Stage Performance</div>
+                <div class="interest-desc">
+                  Active in ensemble performing with the Livingston Theatre Company (LTC) and volunteer community theatre at Somerset Valley Players. Bringing stage presence, expression, and storytelling into video content and public speaking.
+                </div>
+              </li>
+
+              <li class="interest-item">
+                <div class="interest-title">Dance Captain & Leadership</div>
+                <div class="interest-desc">
+                  Instructed and managed a 27-member competitive dance team across diverse skill levels, achieving 2nd place in regional competition through structured rehearsals and choreography.
+                </div>
+              </li>
+
+              <li class="interest-item">
+                <div class="interest-title">Culinary Arts</div>
+                <div class="interest-desc">
+                  Passionate home baker and cook, experimenting with new recipes and culinary presentation as a creative outlet.
+                </div>
+              </li>
+
+              <li class="interest-item">
+                <div class="interest-title">Continuous Learning: Piano & ASL</div>
+                <div class="interest-desc">
+                  Dedicated to expanding personal creative skills through learning piano and studying American Sign Language (ASL) in my free time.
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT & FOOTER
+         ========================================================================== -->
+    <section id="contact" style="border-bottom: none;">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="section-tag">Connect</span>
+          <h2>Let's Create Together</h2>
+          <p>
+            Always open to digital marketing opportunities, content collaborations, and strategic consulting projects.
+          </p>
+          <div class="btn-group" style="justify-content: center;">
+            <a href="mailto:Bjj51@scarletmail.rutgers.edu" class="btn btn-primary">Email Me</a>
+            <a href="https://www.linkedin.com" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            <a href="https://www.instagram.com/hey.is.brandon/" target="_blank" class="btn btn-secondary">Instagram</a>
+            <a href="https://www.tiktok.com/@heyitsbrandon7" target="_blank" class="btn btn-secondary">TikTok</a>
+            <a href="https://www.youtube.com/@HeyIsBrandon" target="_blank" class="btn btn-secondary">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; Brandon Javier. Designed with an editorial perspective. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: SMOOTH SCROLL REVEAL OBSERVER
+       ========================================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
